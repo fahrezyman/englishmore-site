@@ -1,5 +1,5 @@
 /* ===================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - FIXED VERSION
    =================== */
 
 /* Tablet Styles (768px and below) */
@@ -18,6 +18,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transform: translateY(-100%);
     transition: transform 0.3s ease;
+    z-index: 999;
   }
 
   .nav-menu.active {
@@ -46,18 +47,29 @@
     transform: rotate(45deg) translate(-5px, -6px);
   }
 
-  /* Hero Section */
+  /* Hero Section - FIXED */
+  .hero {
+    height: 100vh;
+    min-height: 600px;
+    padding-top: 120px; /* Increased for mobile */
+    padding-bottom: 2rem;
+  }
+
   .hero h1 {
     font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .hero p {
     font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   /* Section Titles */
@@ -65,18 +77,28 @@
     font-size: 2rem;
   }
 
-  /* About Section */
+  /* About Section - FIXED */
+  .about {
+    margin-top: 0;
+    padding-top: 4rem; /* Reduced from 5rem */
+    position: relative;
+    z-index: 10;
+  }
+
   .about-stats {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   /* Spacing Adjustments */
   .navbar {
     padding: 1rem 3%;
+    height: 70px;
   }
 
   .hero-content {
     padding: 0 1rem;
+    max-width: 90%;
   }
 
   .about,
@@ -102,6 +124,7 @@
   .about-grid {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 2rem;
   }
 
   /* Cards */
@@ -120,18 +143,34 @@
   .social-links {
     justify-content: center;
   }
+
+  /* Scroll behavior fix for mobile */
+  html {
+    scroll-padding-top: 90px;
+  }
+
+  section[id] {
+    scroll-margin-top: 90px;
+  }
 }
 
 /* Mobile Styles (480px and below) */
 @media (max-width: 480px) {
   /* Typography */
+  .hero {
+    padding-top: 140px; /* Even more padding for small mobile */
+    min-height: 100vh;
+  }
+
   .hero h1 {
     font-size: 2rem;
     line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .hero p {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .section-title h2 {
@@ -145,6 +184,19 @@
   /* Navigation */
   .navbar {
     padding: 0.8rem 2%;
+    height: 65px;
+  }
+
+  .navbar.scrolled {
+    height: 60px;
+  }
+
+  .nav-menu {
+    top: 65px;
+  }
+
+  .nav-menu.active {
+    top: 65px;
   }
 
   .logo {
@@ -159,6 +211,7 @@
   /* Hero Section */
   .hero-content {
     padding: 0 1rem;
+    max-width: 95%;
   }
 
   .btn-primary,
@@ -170,8 +223,13 @@
     text-align: center;
   }
 
+  /* About Section - FIXED */
+  .about {
+    padding-top: 3rem;
+    margin-top: 0;
+  }
+
   /* Spacing */
-  .about,
   .features,
   .programs,
   .testimonials,
@@ -245,10 +303,23 @@
   .cta-content p {
     font-size: 1rem;
   }
+
+  /* Enhanced scroll behavior for mobile */
+  html {
+    scroll-padding-top: 100px;
+  }
+
+  section[id] {
+    scroll-margin-top: 100px;
+  }
 }
 
 /* Extra Small Mobile (320px and below) */
 @media (max-width: 320px) {
+  .hero {
+    padding-top: 150px;
+  }
+
   .hero h1 {
     font-size: 1.8rem;
   }
@@ -259,6 +330,7 @@
 
   .navbar {
     padding: 0.6rem 1%;
+    height: 60px;
   }
 
   .logo {
@@ -286,12 +358,24 @@
   .stat-number {
     font-size: 1.3rem;
   }
+
+  html {
+    scroll-padding-top: 110px;
+  }
+
+  section[id] {
+    scroll-margin-top: 110px;
+  }
 }
 
 /* Large Desktop (1200px and above) */
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;
+  }
+
+  .hero {
+    padding-top: 100px;
   }
 
   .hero h1 {
@@ -319,6 +403,15 @@
   .program-card,
   .testimonial-card {
     padding: 2.5rem;
+  }
+
+  /* Better spacing for large screens */
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  section[id] {
+    scroll-margin-top: 80px;
   }
 }
 
@@ -406,17 +499,26 @@
     opacity: 1;
     transform: none;
   }
+
+  /* Override smooth scroll for reduced motion */
+  html {
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Landscape Mobile Orientation */
+/* Landscape Mobile Orientation - IMPROVED */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero {
     height: 100vh;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
   }
 
   .hero h1 {
     font-size: 2.2rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero p {
@@ -431,6 +533,13 @@
 
   .navbar {
     padding: 0.5rem 3%;
+    height: 60px;
+  }
+
+  /* Fix for landscape scrolling */
+  .about {
+    margin-top: 0;
+    padding-top: 3rem;
   }
 }
 
@@ -446,5 +555,90 @@
 
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+}
+
+/* Specific fixes for section overlap issues */
+@media (max-width: 768px) {
+  /* Ensure no negative margins or overlaps */
+  .hero,
+  .about,
+  .features,
+  .programs,
+  .testimonials,
+  .cta-section {
+    position: relative;
+    z-index: auto;
+  }
+
+  /* Progressive z-index to prevent overlaps */
+  .hero {
+    z-index: 1;
+  }
+
+  .about {
+    z-index: 2;
+  }
+
+  .features {
+    z-index: 3;
+  }
+
+  .programs {
+    z-index: 4;
+  }
+
+  .testimonials {
+    z-index: 5;
+  }
+
+  .cta-section {
+    z-index: 6;
+  }
+
+  .footer {
+    z-index: 7;
+  }
+
+  /* Ensure proper section spacing */
+  section {
+    margin-bottom: 0;
+    border-bottom: 1px solid transparent;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Fix for iOS viewport units */
+  @media (max-width: 768px) {
+    .hero {
+      height: 100vh;
+      height: -webkit-fill-available;
+    }
+  }
+}
+
+/* Focus management for mobile navigation */
+@media (max-width: 768px) {
+  .nav-menu.active a:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+  }
+
+  /* Ensure mobile menu appears above everything */
+  .nav-menu {
+    z-index: 9999;
+  }
+
+  .mobile-menu {
+    z-index: 10000;
   }
 }
